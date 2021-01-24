@@ -3,6 +3,7 @@ package me.Adelemphii.LightningTools;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -20,6 +21,7 @@ public class Main extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		this.getServer().getPluginManager().registerEvents(new Events(this), this);
+		Bukkit.addRecipe(CraftingRecipes.getRecipe());
 	}
 
 	@Override
