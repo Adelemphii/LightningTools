@@ -12,7 +12,7 @@ public class CraftingRecipes {
 	}
 	
 	public static ShapedRecipe getRecipe() {
-		
+		//Doesn't work, fix later.
 		ItemStack item = main.getItem();
 		NamespacedKey key = new NamespacedKey(main, "lightning_sword");
 		ShapedRecipe recipe = new ShapedRecipe(key, item);

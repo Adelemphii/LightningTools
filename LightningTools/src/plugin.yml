@@ -7,3 +7,4 @@ api-version: 1.13
 commands:
   LightningSword:
     aliases: ls
+    description: Summons a Lightning Sword which is imbued with the power of the gods.

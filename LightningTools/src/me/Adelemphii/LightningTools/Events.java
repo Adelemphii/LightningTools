@@ -38,7 +38,6 @@ public class Events implements Listener {
 				
 				// Left Click
 				if(event.getAction() == Action.LEFT_CLICK_AIR) {
-					// do somethign with raycasts or something
 					if(!list.contains(player.getName()))
 						list.add(player.getName());
 				}
@@ -51,18 +50,21 @@ public class Events implements Listener {
 	
 	@EventHandler()
 	public void onHit(EntityDamageByEntityEvent event) {
+		// I'm an idiot and forgot to check if they're holding the weapon.
 		if(event.getDamager() instanceof Player) {
 			Player player = (Player) event.getDamager();
-			World world = player.getWorld();
-				// summon lightning
-				Location loc = event.getEntity().getLocation();
-				loc.setY(loc.getY() + 1);
+			if(player.getInventory().getItemInMainHand().getType() == Material.NETHERITE_SWORD) {
+				if(player.getInventory().getItemInMainHand().getItemMeta().hasLore()) {
+					World world = player.getWorld();
+					// summon lightning
+					Location loc = event.getEntity().getLocation();
+					loc.setY(loc.getY() + 1);
 				
-				for (int i = 1; i < 4; i++) {
-					//loc.getWorld().spawnEntity(loc, EntityType.LIGHTNING);
-					world.strikeLightning(event.getEntity().getLocation());
-					
+					for (int i = 1; i < 4; i++) {
+						world.strikeLightning(event.getEntity().getLocation());
+					}
 				}
+			}
 		}
 	}
 	
@@ -95,7 +97,7 @@ public class Events implements Listener {
                     }
                 }
  
-                // Hit the closest player
+                // Hit the closest player if they're within LOS
                 if (hit != null) {
                 	if(player.hasLineOfSight(hit)) {
                 	World world = hit.getWorld();
