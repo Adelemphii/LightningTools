@@ -1,0 +1,9 @@
+main: me.Adelemphii.LightningTools.Main
+name: LightningTools
+version: 1.0
+author: Adelemphii
+api-version: 1.13
+
+commands:
+  LightningSword:
+    aliases: ls
